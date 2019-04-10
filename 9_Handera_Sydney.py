@@ -13,12 +13,21 @@ from os import listdir, path
 from os.path import isfile, join
 import glob
 import sys
+import requests
+import urllib
 ###data_path needs to be changed according to the user
 ###corpus used is the inaugural corpus from nltk plus the two speeches of Obama and Trump
 ###the corpus is saved from moodle
 
 data_path = "/Users/Handera/Desktop/American-Inaugural-Address-Corpus-1961-2017/"
 
+url = "https://github.com/SydneyHandera/Task-09/tree/master/American-Inaugural-Address-Corpus-1961-2017/"
+
+r = requests.get(url)
+if url.endswith("*.txt"):
+	print(url)
+for file in r:
+	print(file)
 ###saving whole corpus into a variable
 for filename in glob.glob(os.path.join(data_path, '*.txt')): #save every file that ends with ".txt" into the variable "filename"
   with open(filename, 'r') as f: #open the files individually with a loop as "f"
